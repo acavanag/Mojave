@@ -10,6 +10,7 @@
 		86111F081D76406100F1E40B /* ConsistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86111F071D76406100F1E40B /* ConsistencyManager.swift */; };
 		86111F311D7BFA0700F1E40B /* Cacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86111F301D7BFA0700F1E40B /* Cacheable.swift */; };
 		86111F331D7BFA2D00F1E40B /* Transcodeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86111F321D7BFA2D00F1E40B /* Transcodeable.swift */; };
+		86111F351D7CA78F00F1E40B /* Archiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86111F341D7CA78F00F1E40B /* Archiver.swift */; };
 		86E2AC7B1D7263E0005FCE31 /* Mojave.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E2AC711D7263E0005FCE31 /* Mojave.framework */; };
 		86E2AC801D7263E0005FCE31 /* MojaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2AC7F1D7263E0005FCE31 /* MojaveTests.swift */; };
 		86E2AC821D7263E0005FCE31 /* Mojave.h in Headers */ = {isa = PBXBuildFile; fileRef = 86E2AC741D7263E0005FCE31 /* Mojave.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,6 +44,7 @@
 		86111F071D76406100F1E40B /* ConsistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsistencyManager.swift; sourceTree = "<group>"; };
 		86111F301D7BFA0700F1E40B /* Cacheable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cacheable.swift; sourceTree = "<group>"; };
 		86111F321D7BFA2D00F1E40B /* Transcodeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transcodeable.swift; sourceTree = "<group>"; };
+		86111F341D7CA78F00F1E40B /* Archiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archiver.swift; sourceTree = "<group>"; };
 		86E2AC711D7263E0005FCE31 /* Mojave.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mojave.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E2AC741D7263E0005FCE31 /* Mojave.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mojave.h; sourceTree = "<group>"; };
 		86E2AC751D7263E0005FCE31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		86111F2F1D7BF9F400F1E40B /* Caching */ = {
 			isa = PBXGroup;
 			children = (
+				86111F341D7CA78F00F1E40B /* Archiver.swift */,
 				86111F301D7BFA0700F1E40B /* Cacheable.swift */,
 				86111F321D7BFA2D00F1E40B /* Transcodeable.swift */,
 			);
@@ -340,6 +343,7 @@
 				86E2AC921D72644C005FCE31 /* DataSourceSection.swift in Sources */,
 				86E2AC901D726433005FCE31 /* DataSourceState.swift in Sources */,
 				86111F311D7BFA0700F1E40B /* Cacheable.swift in Sources */,
+				86111F351D7CA78F00F1E40B /* Archiver.swift in Sources */,
 				86E2ACBC1D73EB37005FCE31 /* Utility.swift in Sources */,
 				86111F331D7BFA2D00F1E40B /* Transcodeable.swift in Sources */,
 				86E2AC8E1D72640A005FCE31 /* DataSource.swift in Sources */,
