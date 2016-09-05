@@ -55,7 +55,7 @@ class CollectionViewController: UICollectionViewController, DataSourceDelegate {
         let model = Model(id: 1, name: "Andrew", date: now, fav: true, wat: wat)
         
         after(delayInSeconds: 1) { 
-            self.archiver.async_archive(model, to: url) { _ in }
+            self.archiver.archive(model, to: url)
         }
         
         after(delayInSeconds: 3) { 

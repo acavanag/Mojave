@@ -13,12 +13,14 @@ public final class Archiver {
     
     public init() {}
     
-    public func async_archive<T: Cacheable>(_ object: T, to url: URL, with completion: @escaping (Bool) -> Void) {
+    public func archive<T: Cacheable>(_ object: T, to url: URL, with completion: (@escaping (Bool) -> Void)? = nil) {
         archiveQueue.async {
             do {
                 try self.sync_archive(object: object, url: url)
+                guard let completion = completion else { return }
                 DispatchQueue.main.async { completion(true) }
             } catch {
+                guard let completion = completion else { return }
                 DispatchQueue.main.async { completion(false) }
             }
         }
