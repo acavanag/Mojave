@@ -15,8 +15,15 @@ struct TestModel: DataSourceModel {
     let color: UIColor
 }
 
+func after(delayInSeconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main, _ block: @escaping () -> Void) {
+    let milliseconds = Int(delayInSeconds * 1000)
+    let delayTime = DispatchTime.now() + .milliseconds(milliseconds)
+    queue.asyncAfter(deadline: delayTime, execute: block)
+}
+
 class CollectionViewController: UICollectionViewController, DataSourceDelegate {
 
+    let archiver = Archiver()
     var dataSource: DataSource
     
     var dataSourceCollectionView: UICollectionView? {
@@ -28,6 +35,7 @@ class CollectionViewController: UICollectionViewController, DataSourceDelegate {
         dataSource = DataSource(initialState: initialState)
         
         super.init(nibName: nil, bundle: nil)
+        cacheTests()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,6 +43,23 @@ class CollectionViewController: UICollectionViewController, DataSourceDelegate {
         dataSource = DataSource(initialState: initialState)
         
         super.init(coder: aDecoder)
+        cacheTests()
+    }
+    
+    func cacheTests() {
+        let _url = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let url = _url.appendingPathComponent("lol_neat")
+        let model = Model(name: "Andrew")
+        
+        after(delayInSeconds: 1) { 
+            self.archiver.async_archive(model, to: url) { _ in }
+        }
+        
+        after(delayInSeconds: 3) { 
+            self.archiver.async_unarchive(url, of: Model.self, with: { object in
+                print(object?.name)
+            })
+        }
     }
     
     override func viewDidLoad() {

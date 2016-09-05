@@ -11,6 +11,8 @@ import Foundation
 public final class Archiver {
     private let archiveQueue = DispatchQueue(label: "archiveQueue")
     
+    public init() {}
+    
     public func async_archive<T: Cacheable>(_ object: T, to url: URL, with completion: @escaping (Bool) -> Void) {
         archiveQueue.async {
             do {
@@ -26,7 +28,7 @@ public final class Archiver {
         archiveQueue.async {
             do {
                 let data = try Data(contentsOf: url)
-                let coder = Coder.decode(data: data)
+                let coder = Coder(values: Coder.decode(from: data))
                 let object = T(with: coder)
                 DispatchQueue.main.async { completion(object) }
             } catch {
@@ -38,9 +40,9 @@ public final class Archiver {
 
 fileprivate extension Archiver {
     func sync_archive<T: Cacheable>(object: T, url: URL) throws {
-        let coder = Coder(type: type(of: object))
+        let coder = Coder()
         object.encode(with: coder)
         
-        try coder.encode().write(to: url)
+        try coder.encodeToData().write(to: url)
     }
 }
