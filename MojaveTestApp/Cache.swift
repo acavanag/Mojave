@@ -12,19 +12,29 @@ import Mojave
 struct Model: Cacheable {
     let id: Int
     let name: String
+    let date : Date
+    let fav: Bool
     
-    init(id: Int, name: String) {
+    init(id: Int, name: String, date: Date, fav: Bool) {
         self.id = id
         self.name = name
+        self.date = date
+        self.fav = fav
     }
     
     func encode(with coder: Coder) {
         coder.encode(id, for: "id")
         coder.encode(name, for: "name")
+        coder.encode(date, for: "date")
+        coder.encode(fav, for: "fav")
     }
     
     init?(with coder: Coder) {
-        id = coder.decode(for: "id")!
-        name = coder.decode(for: "name")!
+        do {
+            id = try coder.decode(for: "id")
+            name = try coder.decode(for: "name")
+            date = try coder.decode(for: "date")
+            fav = try coder.decode(for: "fav")
+        } catch { return nil }
     }
 }

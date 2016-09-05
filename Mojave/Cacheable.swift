@@ -10,6 +10,10 @@ import Foundation
 
 public typealias Values = [String : [UInt8]]
 
+public enum CacheableError: Error {
+    case invalidDecode
+}
+
 public protocol Cacheable {
     func encode(with coder: Coder)
     init?(with coder: Coder)
@@ -26,8 +30,8 @@ public final class Coder {
         values[key] = Coder.toByteArray(value)
     }
     
-    public func decode<T: ByteRepresentable>(for key: String) -> T? {
-        guard let value = values[key] else { return nil }
+    public func decode<T: ByteRepresentable>(for key: String) throws -> T {
+        guard let value = values[key] else { throw CacheableError.invalidDecode }
         return Coder.fromByteArray(value, T.self)
     }
 }
