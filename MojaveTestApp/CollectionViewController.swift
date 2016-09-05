@@ -49,7 +49,7 @@ class CollectionViewController: UICollectionViewController, DataSourceDelegate {
     func cacheTests() {
         let _url = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let url = _url.appendingPathComponent("lol_neat")
-        let model = Model(name: "Andrew")
+        let model = Model(id: 1, name: "Andrew")
         
         after(delayInSeconds: 1) { 
             self.archiver.async_archive(model, to: url) { _ in }
@@ -58,6 +58,7 @@ class CollectionViewController: UICollectionViewController, DataSourceDelegate {
         after(delayInSeconds: 3) { 
             self.archiver.async_unarchive(url, of: Model.self, with: { object in
                 print(object?.name)
+                print(object?.id)
             })
         }
     }

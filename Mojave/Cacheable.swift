@@ -91,9 +91,9 @@ private extension Coder {
             let currentBuffer = buffer[offset..<bufferTerminus]
             offset += currentBufferSize
             
-            keyIndex = offset + 1
-            bufferIndex = offset + 2
-            offset += 3
+            keyIndex = offset
+            bufferIndex = offset + 1
+            offset += 2
 
             let key = String.fromByteArray(Array(currentKey))
             contents[key] = Array(currentBuffer)
