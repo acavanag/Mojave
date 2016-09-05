@@ -34,6 +34,20 @@ public final class Coder {
         guard let value = values[key] else { throw CacheableError.invalidDecode }
         return Coder.fromByteArray(value, T.self)
     }
+    
+    public func encode<T: Cacheable>(_ value: T, for key: String) {
+        let coder = Coder()
+        value.encode(with: coder)
+        values[key] = coder.encodeValues()
+    }
+    
+    public func decode<T: Cacheable>(for key: String) throws -> T {
+        guard let value = values[key] else { throw CacheableError.invalidDecode }
+        let childValues = Coder.decodeValues(value)
+        let coder = Coder(values: childValues)
+        guard let object = T(with: coder) else { throw CacheableError.invalidDecode }
+        return object
+    }
 }
 
 internal extension Coder {

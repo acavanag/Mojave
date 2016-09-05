@@ -51,7 +51,8 @@ class CollectionViewController: UICollectionViewController, DataSourceDelegate {
         
         let _url = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let url = _url.appendingPathComponent("lol_neat")
-        let model = Model(id: 1, name: "Andrew", date: now, fav: true)
+        let wat = Wat(id: 28, path: "yolo.swag")
+        let model = Model(id: 1, name: "Andrew", date: now, fav: true, wat: wat)
         
         after(delayInSeconds: 1) { 
             self.archiver.async_archive(model, to: url) { _ in }
@@ -63,6 +64,8 @@ class CollectionViewController: UICollectionViewController, DataSourceDelegate {
                 print(object?.id)
                 print(object?.date)
                 print(object?.fav)
+                print(object?.wat.id)
+                print(object?.wat.path)
             })
         }
     }
