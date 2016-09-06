@@ -52,6 +52,9 @@ struct Model: Cacheable {
         coder.encode(date, for: "date")
         coder.encode(fav, for: "fav")
         coder.encode(wat, for: "wat")
+        
+        let nums = [1,2,3]
+        coder.encode(nums, for: "nums")
     }
     
     init?(with coder: Coder) {
