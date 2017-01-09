@@ -14,7 +14,7 @@ public protocol CoordinatorDelegate: class {
     var dataSourceCollectionView: UICollectionView { get }
 }
 
-public protocol Coordinator: class {
+public protocol Coordinator: class, DataSourceDelegate {
     var dataSource: DataSource { get set }
     weak var delegate: CoordinatorDelegate? { get set }
     func mutate<T: DataSourceModel>(type: T.Type, indexPath: IndexPath, mutation: (inout T) -> Void)
