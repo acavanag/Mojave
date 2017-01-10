@@ -16,6 +16,7 @@ public protocol CoordinatorDelegate: class {
 
 public protocol Coordinator: class, DataSourceDelegate {
     var dataSource: DataSource { get set }
+    var dispatcher: Dispatcher { get }
     weak var delegate: CoordinatorDelegate? { get set }
     func mutate<T: DataSourceModel>(type: T.Type, indexPath: IndexPath, mutation: (inout T) -> Void)
     func update<T: DataSourceModel>(model: T, indexPath: IndexPath, mutation: (inout T) -> Void) -> DataSourceChangeset
