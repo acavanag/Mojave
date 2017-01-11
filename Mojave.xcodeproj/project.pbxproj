@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		86111F081D76406100F1E40B /* ConsistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86111F071D76406100F1E40B /* ConsistencyManager.swift */; };
+		861F89361E24241C007E0D62 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F89351E24241C007E0D62 /* Coordinator.swift */; };
+		861F89381E24297D007E0D62 /* SectionedSizeCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F89371E24297D007E0D62 /* SectionedSizeCache.swift */; };
+		861F893A1E24299D007E0D62 /* GenericSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F89391E24299D007E0D62 /* GenericSection.swift */; };
+		861F89431E257DA1007E0D62 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F89421E257DA1007E0D62 /* Dispatcher.swift */; };
+		861F896D1E25F536007E0D62 /* Descriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F896C1E25F536007E0D62 /* Descriptor.swift */; };
+		861F89731E26DDA3007E0D62 /* GenericCellCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F89721E26DDA3007E0D62 /* GenericCellCache.swift */; };
+		861F89751E26DDC3007E0D62 /* GenericCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F89741E26DDC3007E0D62 /* GenericCell.swift */; };
+		861F89781E26DE0E007E0D62 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F89761E26DE0E007E0D62 /* Reusable.swift */; };
+		861F89791E26DE0E007E0D62 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F89771E26DE0E007E0D62 /* Layout.swift */; };
 		862675AB1DA1B7310084CE0A /* ArrayDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862675AA1DA1B7310084CE0A /* ArrayDiff.swift */; };
 		862675AD1DA1B84C0084CE0A /* ArrayDiffUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862675AC1DA1B84C0084CE0A /* ArrayDiffUtils.swift */; };
 		866B51D01DA1D9FE00DBD49A /* Mojave.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E2AC711D7263E0005FCE31 /* Mojave.framework */; };
@@ -64,6 +73,15 @@
 
 /* Begin PBXFileReference section */
 		86111F071D76406100F1E40B /* ConsistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsistencyManager.swift; sourceTree = "<group>"; };
+		861F89351E24241C007E0D62 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		861F89371E24297D007E0D62 /* SectionedSizeCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionedSizeCache.swift; sourceTree = "<group>"; };
+		861F89391E24299D007E0D62 /* GenericSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericSection.swift; sourceTree = "<group>"; };
+		861F89421E257DA1007E0D62 /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
+		861F896C1E25F536007E0D62 /* Descriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Descriptor.swift; sourceTree = "<group>"; };
+		861F89721E26DDA3007E0D62 /* GenericCellCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCellCache.swift; sourceTree = "<group>"; };
+		861F89741E26DDC3007E0D62 /* GenericCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCell.swift; sourceTree = "<group>"; };
+		861F89761E26DE0E007E0D62 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		861F89771E26DE0E007E0D62 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		862675AA1DA1B7310084CE0A /* ArrayDiff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayDiff.swift; sourceTree = "<group>"; };
 		862675AC1DA1B84C0084CE0A /* ArrayDiffUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayDiffUtils.swift; sourceTree = "<group>"; };
 		86E2AC711D7263E0005FCE31 /* Mojave.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mojave.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +206,8 @@
 		86E2AC8C1D7263FB005FCE31 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				861F89761E26DE0E007E0D62 /* Reusable.swift */,
+				861F89771E26DE0E007E0D62 /* Layout.swift */,
 				86E2AC991D7264DE005FCE31 /* Model.swift */,
 				86E2AC8D1D72640A005FCE31 /* DataSource.swift */,
 				86E2AC8F1D726433005FCE31 /* DataSourceState.swift */,
@@ -195,6 +215,13 @@
 				86E2AC931D726464005FCE31 /* DataSourceMutable.swift */,
 				86E2AC951D726481005FCE31 /* DataSourceChangeset.swift */,
 				86E2AC971D7264A9005FCE31 /* DataSourceAppliedChanges.swift */,
+				861F89351E24241C007E0D62 /* Coordinator.swift */,
+				861F89371E24297D007E0D62 /* SectionedSizeCache.swift */,
+				861F89391E24299D007E0D62 /* GenericSection.swift */,
+				861F89421E257DA1007E0D62 /* Dispatcher.swift */,
+				861F896C1E25F536007E0D62 /* Descriptor.swift */,
+				861F89741E26DDC3007E0D62 /* GenericCell.swift */,
+				861F89721E26DDA3007E0D62 /* GenericCellCache.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -365,13 +392,22 @@
 				86E2AC961D726481005FCE31 /* DataSourceChangeset.swift in Sources */,
 				86E2AC921D72644C005FCE31 /* DataSourceSection.swift in Sources */,
 				86E2AC901D726433005FCE31 /* DataSourceState.swift in Sources */,
+				861F89381E24297D007E0D62 /* SectionedSizeCache.swift in Sources */,
 				86E2ACBC1D73EB37005FCE31 /* Utility.swift in Sources */,
 				86E2AC8E1D72640A005FCE31 /* DataSource.swift in Sources */,
+				861F89751E26DDC3007E0D62 /* GenericCell.swift in Sources */,
+				861F89731E26DDA3007E0D62 /* GenericCellCache.swift in Sources */,
 				862675AB1DA1B7310084CE0A /* ArrayDiff.swift in Sources */,
 				86111F081D76406100F1E40B /* ConsistencyManager.swift in Sources */,
+				861F89361E24241C007E0D62 /* Coordinator.swift in Sources */,
+				861F896D1E25F536007E0D62 /* Descriptor.swift in Sources */,
 				86E2AC981D7264A9005FCE31 /* DataSourceAppliedChanges.swift in Sources */,
 				86E2AC941D726464005FCE31 /* DataSourceMutable.swift in Sources */,
 				862675AD1DA1B84C0084CE0A /* ArrayDiffUtils.swift in Sources */,
+				861F89781E26DE0E007E0D62 /* Reusable.swift in Sources */,
+				861F89791E26DE0E007E0D62 /* Layout.swift in Sources */,
+				861F893A1E24299D007E0D62 /* GenericSection.swift in Sources */,
+				861F89431E257DA1007E0D62 /* Dispatcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
