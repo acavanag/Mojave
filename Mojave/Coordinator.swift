@@ -17,6 +17,7 @@ public protocol CoordinatorDelegate: class {
 public protocol Coordinator: class, DataSourceDelegate {
     var dataSource: DataSource { get set }
     var dispatcher: Dispatcher { get }
+    var cachedSizes: SectionedSizeCache { get }
     weak var delegate: CoordinatorDelegate? { get set }
     func mutate<T: DataSourceModel>(type: T.Type, indexPath: IndexPath, mutation: (inout T) -> Void)
     func update<T: DataSourceModel>(model: T, indexPath: IndexPath, mutation: (inout T) -> Void) -> DataSourceChangeset
@@ -105,6 +106,19 @@ public extension Coordinator {
         let sections = IndexSet(integersIn: Range(uncheckedBounds: (0, endIndex)))
         let change = DataSourceChangeset.with(removedSections: sections)
         dataSource.apply(changeset: change)
+    }
+
+    func size(collectionView: UICollectionView, indexPath: IndexPath, descriptor: Descriptor) -> CGSize {
+        if let cachedSize = cachedSizes.size(for: indexPath) {
+            return cachedSize
+        }
+        let maxWidth = collectionView.bounds.size.width
+        let itemState = dataSource.state.item(at: indexPath)
+        let height = descriptor.height(for: itemState, at: indexPath, maxWidth: maxWidth, coordinator: self)
+
+        let size = CGSize(width: maxWidth, height: height)
+        cachedSizes.cache(size: size, for: indexPath)
+        return size
     }
 }
 
