@@ -52,3 +52,19 @@ extension UIView {
         parentView.addConstraints([left, top, right, bottom])
     }
 }
+
+public protocol Measurable {
+    func height() -> CGFloat
+}
+
+public extension Measurable where Self : UICollectionViewCell {
+    func height() -> CGFloat {
+        return contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+    }
+}
+
+public extension Measurable where Self: UIView {
+    func height() -> CGFloat {
+        return systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+    }
+}

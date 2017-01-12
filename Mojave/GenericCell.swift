@@ -7,17 +7,15 @@
 //
 
 import UIKit
-import Mojave
 
-public protocol Component: DataSourceModel {
-    associatedtype View
+public protocol ComponentView: Measurable {
+    associatedtype Component
 
-    func configure(for view: View, with dispatcher: Dispatcher?)
-    func height(for view: View) -> CGFloat
+    func configure(with model: Component, dispatcher: Dispatcher?)
 }
 
-public class GenericCell<T: Component>: UICollectionViewCell, Reuseable where T.View: UIView {
-    private let componentView = T.View()
+public class GenericCell<T: ComponentView>: UICollectionViewCell, Reuseable where T: UIView {
+    private let componentView = T()
     private var maxWidth: CGFloat = 0
 
     public override init(frame: CGRect = .zero) {
@@ -26,9 +24,9 @@ public class GenericCell<T: Component>: UICollectionViewCell, Reuseable where T.
         contentView.backgroundColor = .blue
     }
 
-    public func configure(with component: T, maxWidth: CGFloat = 0, dispatcher: Dispatcher? = nil) {
+    public func configure(with component: T.Component, maxWidth: CGFloat = 0, dispatcher: Dispatcher? = nil) {
         self.maxWidth = maxWidth
-        component.configure(for: componentView, with: dispatcher)
+        componentView.configure(with: component, dispatcher: dispatcher)
         componentView.setNeedsLayout()
         componentView.layoutIfNeeded()
     }
@@ -42,7 +40,7 @@ public class GenericCell<T: Component>: UICollectionViewCell, Reuseable where T.
         super.layoutSubviews()
     }
 
-    public func height(with component: T) -> CGFloat {
-        return component.height(for: componentView)
+    public func height() -> CGFloat {
+        return componentView.height()
     }
 }

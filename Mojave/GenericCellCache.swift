@@ -14,12 +14,12 @@ public final class GenericCellCache {
 
     public init() {}
 
-    public func cache<T: Component>(cell: GenericCell<T>) {
+    public func cache<T: ComponentView>(cell: GenericCell<T>) {
         guard let identifier = cell.reuseIdentifier else { return }
         cellCache[identifier] = cell
     }
 
-    public func cell<T: Component>(for cellType: GenericCell<T>.Type) -> GenericCell<T> {
+    public func cell<T: ComponentView>(for cellType: GenericCell<T>.Type) -> GenericCell<T> {
         if let cachedCell = cellCache[cellType.reuseIdentifier] as? GenericCell<T> {
             return cachedCell
         }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Mojave
 
 public protocol Descriptor {
     var cellCache: GenericCellCache { get }
@@ -24,9 +23,9 @@ public protocol Descriptor {
 }
 
 public extension Descriptor {
-    func modelHeight<T: Component>(component: T, maxWidth: CGFloat) -> CGFloat where T.View: UIView {
+    func viewHeight<T: ComponentView>(for model: T.Component, viewType: T.Type, maxWidth: CGFloat) -> CGFloat where T: UIView {
         let cell = cellCache.cell(for: GenericCell<T>.self)
-        cell.configure(with: component, maxWidth: maxWidth, dispatcher: nil)
-        return cell.height(with: component)
+        cell.configure(with: model, maxWidth: maxWidth, dispatcher: nil)
+        return cell.height()
     }
 }
