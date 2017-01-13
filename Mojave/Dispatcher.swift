@@ -37,7 +37,7 @@ public final class Dispatcher {
         let observer = Observer<T>(block: block)
 
         if observers[event.key] == nil {
-            observers[event.key] = NSHashTable(options: NSPointerFunctions.Options.weakMemory)
+            observers[event.key] = NSHashTable()
         }
         observers[event.key]?.add(observer)
     }
