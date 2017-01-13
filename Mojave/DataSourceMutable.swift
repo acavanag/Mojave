@@ -50,9 +50,13 @@ struct DataSourceChangesetModification: DataSourceMutable {
             sections.remove(at: sectionIndex)
         }
         
+        // insert sections
         var newSections = [DataSourceSection]()
         var newSectionIndicies = IndexSet()
-        changeset.insertedSections.forEach {
+        let sortedInsertedSections = changeset.insertedSections.sorted {
+            $0.key < $1.key
+        }
+        sortedInsertedSections.forEach {
             newSectionIndicies.append(IndexSet(integer: $0.key))
             newSections.append($0.value)
         }

@@ -32,17 +32,21 @@ public struct DataSourceState {
         return sections[indexPath.section].items[indexPath.item]
     }
     
-    public func enumerate(block: (_ : DataSourceModel, _ : IndexPath) -> Void) {
+    public func enumerate(block: (_ : DataSourceModel, _ : IndexPath, _ : inout Bool) -> Void) {
+        var stop = false
         for (sectionIndex, section) in sections.enumerated() {
             for (itemIndex, item) in section.items.enumerated() {
-                block(item, IndexPath(item: itemIndex, section: sectionIndex))
+                block(item, IndexPath(item: itemIndex, section: sectionIndex), &stop)
+                if stop { return }
             }
         }
     }
     
-    public func enumerate(section: Int, block: (_ : DataSourceModel, _ : IndexPath) -> Void) {
+    public func enumerate(section: Int, block: (_ : DataSourceModel, _ : IndexPath, _ : inout Bool) -> Void) {
+        var stop = false
         for (index, item) in sections[section].items.enumerated() {
-            block(item, IndexPath(item: index, section: section))
+            block(item, IndexPath(item: index, section: section), &stop)
+            if stop { return }
         }
     }
 }
