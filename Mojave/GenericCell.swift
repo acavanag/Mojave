@@ -8,20 +8,19 @@
 
 import UIKit
 
-public protocol ComponentView: Measurable {
+public protocol ComponentView: Createable, Measurable {
     associatedtype Component
 
     func configure(with model: Component, dispatcher: Dispatcher?)
 }
 
 public class GenericCell<T: ComponentView>: UICollectionViewCell, Reuseable where T: UIView {
-    private let componentView = T()
+    private let componentView = T.create()
     private var maxWidth: CGFloat = 0
 
     public override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         contentView.addAndPin(subview: componentView)
-        contentView.backgroundColor = .blue
     }
 
     public func configure(with component: T.Component, maxWidth: CGFloat = 0, dispatcher: Dispatcher? = nil) {
