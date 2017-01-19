@@ -25,7 +25,8 @@ public protocol Descriptor {
 public extension Descriptor {
     func viewHeight<T: ComponentView>(for model: T.Component, viewType: T.Type, maxWidth: CGFloat) -> CGFloat where T: UIView {
         let cell = cellCache.cell(for: GenericCell<T>.self)
-        cell.configure(with: model, maxWidth: maxWidth, dispatcher: nil)
+        let maxSize = CGSize(width: maxWidth, height: .largeValue)
+        cell.configure(with: model, maxSize: maxSize, dispatcher: nil)
         return cell.height()
     }
 }
