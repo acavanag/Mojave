@@ -24,6 +24,12 @@ extension Set {
     }
 }
 
+public extension CGFloat {
+    static var largeValue: CGFloat {
+        return 10e4
+    }
+}
+
 extension IndexSet {
     mutating func append(_ rhs: IndexSet) {
         for e in rhs {
