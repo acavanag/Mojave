@@ -59,6 +59,25 @@ extension UIView {
     }
 }
 
+extension UICollectionView {
+
+    func dequeue<T: UICollectionViewCell>(forIndexPath indexPath: IndexPath) -> T where T: Reuseable {
+        guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
+            fatalError("Could not dequeue cell with identifier: \(T.reuseIdentifier)")
+        }
+        return cell
+    }
+
+    func register<T: UICollectionViewCell>(_ : T.Type) where T: Reuseable, T: NibLoadedType {
+        register(UINib(nibName: T.nibName, bundle: nil), forCellWithReuseIdentifier: T.reuseIdentifier)
+    }
+
+    func register<T: UICollectionViewCell>(_ : T.Type) where T: Reuseable {
+        register(T.self, forCellWithReuseIdentifier: T.reuseIdentifier)
+    }
+    
+}
+
 public protocol Measurable {
     func height() -> CGFloat
 }

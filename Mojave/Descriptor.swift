@@ -15,6 +15,7 @@ public protocol Descriptor {
                 at indexPath: IndexPath,
                 maxWidth: CGFloat,
                 coordinator: Coordinator) -> CGFloat
+    
     func cell(for model: DataSourceModel,
               at indexPath: IndexPath,
               in collectionView: UICollectionView,
@@ -28,5 +29,17 @@ public extension Descriptor {
         let maxSize = CGSize(width: maxWidth, height: .largeValue)
         cell.configure(with: model, maxSize: maxSize, dispatcher: nil)
         return cell.height()
+    }
+
+    func configuredCell<T: ComponentView>(_ model: T.Component,
+                        _ viewType: T.Type,
+                        _ collectionView: UICollectionView,
+                        _ indexPath: IndexPath,
+                        _ coordinator: Coordinator,
+                        _ maxWidth: CGFloat) -> GenericCell<T> {
+        let cell = collectionView.dequeue(forIndexPath: indexPath) as GenericCell<T>
+        let maxSize = CGSize(width: maxWidth, height: .largeValue)
+        cell.configure(with: model, maxSize: maxSize, dispatcher: coordinator.dispatcher)
+        return cell
     }
 }
