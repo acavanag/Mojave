@@ -9,10 +9,21 @@
 import Foundation
 import UIKit
 
+@objc public protocol DataSourceCollection: class {
+    func deleteSections(_ sections: IndexSet)
+    func insertSections(_ sections: IndexSet)
+    func deleteItems(at indexPaths: [IndexPath])
+    func reloadItems(at indexPaths: [IndexPath])
+    func insertItems(at indexPaths: [IndexPath])
+    func performBatchUpdates(_ updates: (() -> Swift.Void)?, completion: ((Bool) -> Swift.Void)?)
+    func reloadData()
+}
+
 public protocol DataSourceDelegate: class {
-    var dataSourceCollectionView: UICollectionView? { get }
+    var collection: DataSourceCollection? { get }
     func dataSource(_ dataSource: DataSource, didModify previousState: DataSourceState, with changes: DataSourceAppliedChanges)
 }
+
 extension DataSourceDelegate {
     func dataSource(_ dataSource: DataSource, didModify previousState: DataSourceState, with changes: DataSourceAppliedChanges) {}
 }
@@ -35,7 +46,7 @@ public struct DataSource {
     }
     
     private func update(with change: DataSourceChange, from previous: DataSourceState) {
-        guard let collectionView = delegate?.dataSourceCollectionView else { return }
+        guard let collectionView = delegate?.collection else { return }
         let appliedChanges = change.appliedChanges
         collectionView.performBatchUpdates({
             if !appliedChanges.removedSections.isEmpty {
