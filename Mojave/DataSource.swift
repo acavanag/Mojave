@@ -69,3 +69,9 @@ public struct DataSource {
         }
     }
 }
+
+public extension DataSource {
+    static func singleSection(with items: [DataSourceModel] = []) -> DataSource {
+        return DataSource(initialState: DataSourceState(sections: [GenericSection(items: items)]), delegate: nil)
+    }
+}

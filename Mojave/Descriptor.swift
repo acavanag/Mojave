@@ -11,35 +11,31 @@ import UIKit
 public protocol Descriptor {
     var cellCache: GenericCellCache { get }
 
-    func height(for model: DataSourceModel,
+    func size(for model: DataSourceModel,
                 at indexPath: IndexPath,
-                maxWidth: CGFloat,
-                coordinator: Coordinator) -> CGFloat
+                maxSize: CGSize,
+                coordinator: Coordinator) -> CGSize
     
     func cell(for model: DataSourceModel,
               at indexPath: IndexPath,
               in collectionView: UICollectionView,
-              coordinator: Coordinator,
-              maxWidth: CGFloat) -> UICollectionViewCell
+              coordinator: Coordinator) -> UICollectionViewCell
 }
 
 public extension Descriptor {
-    func viewHeight<T: ComponentView>(for model: T.Component, viewType: T.Type, maxWidth: CGFloat) -> CGFloat where T: UIView {
+    func viewSize<T: ComponentView>(for model: T.Component, viewType: T.Type, maxSize: CGSize) -> CGSize where T: UIView {
         let cell = cellCache.cell(for: GenericCell<T>.self)
-        let maxSize = CGSize(width: maxWidth, height: .largeValue)
         cell.configure(with: model, maxSize: maxSize, dispatcher: nil)
-        return cell.height()
+        return cell.size()
     }
 
     func configuredCell<T: ComponentView>(_ model: T.Component,
                         _ viewType: T.Type,
                         _ collectionView: UICollectionView,
                         _ indexPath: IndexPath,
-                        _ coordinator: Coordinator,
-                        _ maxWidth: CGFloat) -> GenericCell<T> {
+                        _ coordinator: Coordinator) -> GenericCell<T> {
         let cell = collectionView.dequeue(forIndexPath: indexPath) as GenericCell<T>
-        let maxSize = CGSize(width: maxWidth, height: .largeValue)
-        cell.configure(with: model, maxSize: maxSize, dispatcher: coordinator.dispatcher)
+        cell.configure(with: model, dispatcher: coordinator.dispatcher)
         return cell
     }
 }

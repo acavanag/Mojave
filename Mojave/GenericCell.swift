@@ -8,10 +8,11 @@
 
 import UIKit
 
-public protocol ComponentView: Createable, Measurable {
+public protocol ComponentView: Createable {
     associatedtype Component
 
     func configure(with model: Component, maxSize: CGSize, dispatcher: Dispatcher?)
+    func size() -> CGSize
 }
 
 public class GenericCell<T: ComponentView>: UICollectionViewCell, Reuseable where T: UIView {
@@ -34,7 +35,7 @@ public class GenericCell<T: ComponentView>: UICollectionViewCell, Reuseable wher
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func height() -> CGFloat {
-        return componentView.height()
+    public func size() -> CGSize {
+        return componentView.size()
     }
 }

@@ -59,7 +59,7 @@ extension UIView {
     }
 }
 
-extension UICollectionView {
+public extension UICollectionView {
 
     func dequeue<T: UICollectionViewCell>(forIndexPath indexPath: IndexPath) -> T where T: Reuseable {
         guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
@@ -79,17 +79,17 @@ extension UICollectionView {
 }
 
 public protocol Measurable {
-    func height() -> CGFloat
+    func size() -> CGSize
 }
 
 public extension Measurable where Self : UICollectionViewCell {
-    func height() -> CGFloat {
-        return contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+    func size() -> CGSize {
+        return contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
     }
 }
 
 public extension Measurable where Self: UIView {
-    func height() -> CGFloat {
-        return systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+    func size() -> CGSize {
+        return systemLayoutSizeFitting(UILayoutFittingCompressedSize)
     }
 }

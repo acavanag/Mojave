@@ -21,6 +21,9 @@
 		862675AD1DA1B84C0084CE0A /* ArrayDiffUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862675AC1DA1B84C0084CE0A /* ArrayDiffUtils.swift */; };
 		866B51D01DA1D9FE00DBD49A /* Mojave.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E2AC711D7263E0005FCE31 /* Mojave.framework */; };
 		866B51D11DA1D9FE00DBD49A /* Mojave.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 86E2AC711D7263E0005FCE31 /* Mojave.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		866E79EA1E7F06F200EBCDBF /* CollectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866E79E91E7F06F200EBCDBF /* CollectionNode.swift */; };
+		866E79EE1E7F41B100EBCDBF /* CController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866E79ED1E7F41B100EBCDBF /* CController.swift */; };
+		866E79FC1E7F55F600EBCDBF /* CCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866E79FB1E7F55F600EBCDBF /* CCoordinator.swift */; };
 		86E2AC7B1D7263E0005FCE31 /* Mojave.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E2AC711D7263E0005FCE31 /* Mojave.framework */; };
 		86E2AC801D7263E0005FCE31 /* MojaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2AC7F1D7263E0005FCE31 /* MojaveTests.swift */; };
 		86E2AC821D7263E0005FCE31 /* Mojave.h in Headers */ = {isa = PBXBuildFile; fileRef = 86E2AC741D7263E0005FCE31 /* Mojave.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -84,6 +87,9 @@
 		861F89771E26DE0E007E0D62 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		862675AA1DA1B7310084CE0A /* ArrayDiff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayDiff.swift; sourceTree = "<group>"; };
 		862675AC1DA1B84C0084CE0A /* ArrayDiffUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayDiffUtils.swift; sourceTree = "<group>"; };
+		866E79E91E7F06F200EBCDBF /* CollectionNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionNode.swift; sourceTree = "<group>"; };
+		866E79ED1E7F41B100EBCDBF /* CController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CController.swift; sourceTree = "<group>"; };
+		866E79FB1E7F55F600EBCDBF /* CCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCoordinator.swift; sourceTree = "<group>"; };
 		86E2AC711D7263E0005FCE31 /* Mojave.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mojave.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E2AC741D7263E0005FCE31 /* Mojave.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mojave.h; sourceTree = "<group>"; };
 		86E2AC751D7263E0005FCE31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -222,6 +228,9 @@
 				861F896C1E25F536007E0D62 /* Descriptor.swift */,
 				861F89741E26DDC3007E0D62 /* GenericCell.swift */,
 				861F89721E26DDA3007E0D62 /* GenericCellCache.swift */,
+				866E79E91E7F06F200EBCDBF /* CollectionNode.swift */,
+				866E79ED1E7F41B100EBCDBF /* CController.swift */,
+				866E79FB1E7F55F600EBCDBF /* CCoordinator.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -315,7 +324,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Andrew Cavanagh";
 				TargetAttributes = {
 					86E2AC701D7263E0005FCE31 = {
@@ -389,11 +398,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				86E2AC9A1D7264DE005FCE31 /* Model.swift in Sources */,
+				866E79EE1E7F41B100EBCDBF /* CController.swift in Sources */,
 				86E2AC961D726481005FCE31 /* DataSourceChangeset.swift in Sources */,
 				86E2AC921D72644C005FCE31 /* DataSourceSection.swift in Sources */,
 				86E2AC901D726433005FCE31 /* DataSourceState.swift in Sources */,
 				861F89381E24297D007E0D62 /* SectionedSizeCache.swift in Sources */,
 				86E2ACBC1D73EB37005FCE31 /* Utility.swift in Sources */,
+				866E79FC1E7F55F600EBCDBF /* CCoordinator.swift in Sources */,
+				866E79EA1E7F06F200EBCDBF /* CollectionNode.swift in Sources */,
 				86E2AC8E1D72640A005FCE31 /* DataSource.swift in Sources */,
 				861F89751E26DDC3007E0D62 /* GenericCell.swift in Sources */,
 				861F89731E26DDA3007E0D62 /* GenericCellCache.swift in Sources */,
@@ -482,6 +494,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -535,6 +548,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
